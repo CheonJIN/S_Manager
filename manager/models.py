@@ -5,7 +5,7 @@ from django import forms
 
 AREA_CHOICES = [
     ('SEOUL', 'Seoul'),
-    ('DAEJEAN', 'Daejean'),
+    ('DAEJEON', 'Daejeon'),
     ('BUSAN', 'Busan'),
     ('CHANGWON', 'Changwon'),
     ('GWHANGJU', 'Gwhanju'),
@@ -17,8 +17,8 @@ class Customer(models.Model):
     #author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     rank = models.CharField(max_length=20)
-    company = models.CharField(max_length=30)
-    #company = models.ForeignKey('manager.Company', related_name='customers', on_delete=models.CASCADE)
+    #company = models.CharField(max_length=30)
+    company = models.ForeignKey('manager.Company', related_name='customers', on_delete=models.CASCADE)
     department = models.CharField(max_length=30)
     mobile = models.CharField(max_length=30)
     telecom = models.CharField(max_length=30)

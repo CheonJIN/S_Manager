@@ -14,6 +14,12 @@ def customer_list(request):
     return render(request, 'manager/customer_list.html', {'customers': customers})
 
 
+def customer_detail(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+    
+    return render(request, 'manager/customer_detail.html', {'customer': customer})
+
+
 def customer_new(request):
     if request.method == "POST":
         form = CustomerForm(request.POST)
@@ -45,10 +51,23 @@ def customer_edit(request, pk):
     return render(request, 'manager/customer_edit.html', {'form': form})
 
 
+def customer_remove(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+    customer.delete()
+    
+    return redirect('customer_list')
+    
+
 def company_list(request):
     company = Company.objects.order_by('name')
     
     return render(request, 'manager/company_list.html', {'company': company})
+
+
+def company_detail(request, pk):
+    company = get_object_or_404(Company, pk=pk)
+    
+    return render(request, 'manager/company_detail.html', {'company': company})
 
 
 def company_new(request):
@@ -68,7 +87,7 @@ def company_new(request):
 
 
 def company_edit(request, pk):
-    company = get_object_or_404(Customer, pk=pk)
+    company = get_object_or_404(Company, pk=pk)
     if request.method == "POST":
         form = CompanyForm(request.POST, instance=company)
         if form.is_valid():
@@ -79,5 +98,12 @@ def company_edit(request, pk):
     else:
         form = CompanyForm(instance=company)
         
-    return render(request, 'manager/company_edit.html', {'form': form})         
+    return render(request, 'manager/company_edit.html', {'form': form})
+
+
+def company_remove(request, pk):
+    company = get_object_or_404(Company, pk=pk)
+    company.delete()
+    
+    return redirect('company_list')         
         

@@ -1,0 +1,36 @@
+{% extends 'manager/base.html' %}
+
+{% block content %}
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		  <h1 class="h3 mb-0 text-gray-800">Company detail</h1>
+		</div>
+		
+		<div class="card mb-4 py-3 border-left-success">
+			<div class="card-body">
+				<div class="justify-content-center mb-4">
+					<h1 style="display: inline-block; text-align: center;">{{ company.name }}</h1>
+					<a href="{% url 'company_edit' pk=company.pk %}"><span class="fas fa-user-edit" style="padding-right: 5px;"></span></a>
+					<a href="{% url 'company_remove' pk=company.pk %}"><span class="fas fa-user-slash"></span></a>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tr>
+							<th width=20%>manager</th>
+							<td>{{ company.manager }}</td>
+						</tr>
+						<tr>
+							<th>regional office</th>
+							<td>{{ company.regional_office}}</td>
+						</tr>
+						<tr>
+							<th>enrolled date</th>
+							<td>{{ company.enrolled_date }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

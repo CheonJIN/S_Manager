@@ -1,5 +1,53 @@
-{% extends 'blog/base.html' %}
+{% extends 'manager/base.html' %}
 
 {% block content %}
-
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		  <h1 class="h3 mb-0 text-gray-800">Customer detail</h1>
+		</div>
+		
+		<div class="card mb-4 py-3 border-left-success">
+			<div class="card-body">
+				<div class="justify-content-center mb-4">
+					<h1 style="display: inline-block; text-align: center;">{{ customer.name }}</h1>
+					<a href="{% url 'customer_edit' pk=customer.pk %}"><span class="fas fa-user-edit" style="padding-right: 5px;"></span></a>
+					<a href="{% url 'customer_remove' pk=customer.pk %}"><span class="fas fa-user-slash"></span></a>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tr>
+							<th width=20%>Rank</th>
+							<td>{{ customer.rank }}</td>
+						</tr>
+						<tr>
+							<th>Company</th>
+							<td>{{ customer.company }}</td>
+						</tr>
+						<tr>
+							<th>Department</th>
+							<td>{{ customer.department }}</td>
+						</tr>
+						<tr>
+							<th>Mobile</th>
+							<td>{{ customer.mobile }}</td>
+						</tr>
+						<tr>
+							<th>Telecom</th>
+							<td>{{ customer.telecom }}</td>
+						</tr>
+						<tr>
+							<th>E-mail</th>
+							<td>{{ customer.email }}</td>
+						</tr>
+						<tr>
+							<th>Enrolled date</th>
+							<td>{{ customer.enrolled_date }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		</form>
+	</div>
 {% endblock %}

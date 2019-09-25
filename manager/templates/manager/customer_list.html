@@ -32,9 +32,9 @@
 	          <tbody>
 	          	{% for customer in customers %}
 	          		<tr>
-	          			<td>{{ customer.name }}</td>	
+	          			<td><a href="{% url 'customer_detail' pk=customer.pk %}">{{ customer.name }}</a></td>	
 	          			<td>{{ customer.rank }}</td>
-	          			<td>{{ customer.company }}</td>
+	          			<td><a href="{% url 'company_detail' pk=customer.company.pk %}">{{ customer.company.name }}</a></td>
 	          			<td>{{ customer.department }}</td>
 	          			<td>{{ customer.mobile }}</td>
 	          			<td>{{ customer.telecom }}</td>
