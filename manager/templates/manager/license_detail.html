@@ -1,0 +1,59 @@
+{% extends 'manager/base.html' %}
+
+{% block content %}
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		  <h1 class="h3 mb-0 text-gray-800">License detail</h1>
+		</div>
+		
+		<div class="card mb-4 py-3 border-left-success">
+			<div class="card-body">
+				<div class="justify-content-center mb-4">
+					<a href="{% url 'license_edit' pk=lic.pk %}"><span class="fas fa-user-edit" style="padding-right: 5px;"></span></a>
+					<a href="{% url 'license_remove' pk=lic.pk %}"><span class="fas fa-user-slash"></span></a>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tr>
+							<th width=20%>Company</th>
+							<td><a href="{% url 'company_detail' pk=lic.company.pk %}">{{ lic.company }}</a></td>
+						</tr>
+						<tr>
+							<th>IP</th>
+							<td>{{ lic.ip }}</td>
+						</tr>
+						<tr>
+							<th>Host</th>
+							<td>{{ lic.host }}</td>
+						</tr>
+						<tr>
+							<th>LUM_Target</th>
+							<td>{{ lic.lum_target }}</td>
+						</tr>
+						<tr>
+							<th>DSLS_target</th>
+							<td>{{ lic.dsls_target }}</td>
+						</tr>
+						<tr>
+							<th>Count</th>
+							<td>{{ lic.count }}</td>
+						</tr>
+						<tr>
+							<th>Module</th>
+							<td>{{ lic.module }}</td>
+						</tr>
+						<tr>
+							<th>Memo</th>
+							<td>{{ lic.memo }}</td>
+						</tr>
+						<tr>
+							<th>Explaration Date</th>
+							<td>{{ lic.explaration_date }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from django import forms
 
 
 AREA_CHOICES = [
@@ -38,4 +37,16 @@ class Company(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+class License(models.Model):
+    company = models.ForeignKey('manager.Company', related_name='licenses', on_delete=models.CASCADE)
+    ip = models.CharField(max_length=20)
+    host = models.CharField(max_length=20)
+    lum_target = models.CharField(max_length=20)
+    dsls_target = models.CharField(max_length=20)
+    count = models.IntegerField()
+    module = models.CharField(max_length=100)
+    memo = models.CharField(max_length=200)
+    explaration_date = models.DateField()
     

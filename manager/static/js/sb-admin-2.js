@@ -4,13 +4,11 @@
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");
     $(".sidebar").toggleClass("toggled");
-    if ($.cookie('toggleState') = '0'){
+    if ($(".sidebar").hasClass("toggled")){
     	$('.sidebar .collapse').collapse('hide');
     };
   });
   
-  // add cookie info
-
   // Close any open menu accordions when window is resized below 768px
   $(window).resize(function() {
     if ($(window).width() < 768) {

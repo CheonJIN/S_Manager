@@ -20,4 +20,12 @@ urlpatterns = [
     path('company/<str:pk>/edit/', views.company_edit, name='company_edit'),
     path('company/<str:pk>/', views.company_detail, name='company_detail'),
     path('company/<str:pk>/remove/', views.company_remove, name='company_remove'),
+    
+    path('license/list/', views.license_list, name='license_list'),
+    path('license/new/', views.license_new, name='license_new'),
+    path('license/<int:pk>/', views.license_detail, name='license_detail'),
+    path('license/<int:pk>/edit', views.license_edit, name='license_edit'),
+    path('license/<int:pk>/remove', views.license_remove, name='license_remove'),
+    
+    path('Technical/Registration/', views.technical_reg, name='technical_reg'),
 ]

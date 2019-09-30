@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Customer, Company
-from .forms import CustomerForm, CompanyForm
+from .models import Customer, Company, License
+from .forms import CustomerForm, CompanyForm, LicenseForm
 
 
 # Create your views here.
@@ -107,3 +107,54 @@ def company_remove(request, pk):
     
     return redirect('company_list')         
         
+        
+def license_list(request):
+    licenses = License.objects.order_by('company')
+    
+    return render(request, 'manager/license_list.html', {'licenses': licenses})
+
+
+def license_detail(request, pk):
+    lic = get_object_or_404(License, pk=pk)
+    return render(request, 'manager/license_detail.html', {'lic': lic})
+
+
+def license_new(request):
+    if request.method == "POST":
+        form = LicenseForm(request.POST)
+        if form.is_valid():
+            lic = form.save(commit=False)
+            lic.save()
+            
+            return redirect('license_list')
+        
+    else:
+        form = LicenseForm()
+            
+    return render(request, 'manager/license_edit.html', {'form': form})
+
+
+def license_edit(request, pk):
+    lic = get_object_or_404(License, pk=pk)
+    if request.method == "POST":
+        form = LicenseForm(request.POST, instance=lic)
+        if form.is_valid():
+            lic = form.save(commit=False)
+            lic.save()
+            
+            return redirect('license_list')
+    else:
+        form = LicenseForm(instance=lic)
+        
+    return render(request, 'manager/license_edit.html', {'form': form})
+
+
+def license_remove(request, pk):
+    lic = get_object_or_404(License, pk=pk)
+    lic.delete()
+    
+    return redirect('license_list')
+
+
+def technical_reg(request):
+    return render(request, 'manager/technical_reg.html', {})
