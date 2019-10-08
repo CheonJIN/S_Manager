@@ -1,0 +1,80 @@
+{% extends 'manager/base.html' %}
+
+{% block content %}
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+	
+	  	<!-- Page Heading -->
+		<h1 class="h3 mb-2 text-gray-800">Technical Registration</h1>
+	
+			<!-- DataTales Example -->
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Registration</h6>
+			</div>
+			<div class="card-body">
+				<div class="col-md-12 col-sm-6 col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form method="POST" class="">
+								{% csrf_token %}
+								<div class="table-responsive">
+									<div class="form-group">
+										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+											<th colspan="10"><h5 class="font-weight-bold text-primary">Technical Support</h5></th>
+											<tr>
+												<th>{{ form.company.id_for_label }}</th>
+												<td>{{ form.company }}</td>
+												<th>{{ form.customer_name.id_for_label }}</th>
+												<td>{{ form.customer_name }}</td>
+												<th>{{ form.support_staff.id_for_label }}</th>
+												<td>{{ form.support_staff }}</td>
+												<th>{{ form.support_type.id_for_label }}</th>
+												<td>{{ form.support_type }}</td>
+												<th>{{ form.support_date.id_for_label }}</th>
+												<td>{{ form.support_date }}</td>
+											</tr>
+											<tr>
+												<th>{{ form.requestment.id_for_label }}</th>
+												<td colspan="4">{{ form.requestment }}</td>
+												<th>{{ form.answer.id_for_label }}</th>
+												<td colspan="4">{{ form.answer }}</td>
+											</tr>
+											<th colspan="10"><h5 class="font-weight-bold text-primary">License</h5></th>
+											<tr>
+												<th>{{ licForm.ip.id_for_label }}</th>
+												<td>{{ licForm.ip }}</td>
+												<th>{{ licForm.host.id_for_label }}</th>
+												<td>{{ licForm.host }}</td>
+												<th>{{ licForm.lum_target.id_for_label }}</th>
+												<td>{{ licForm.lum_target }}</td>
+												<th>{{ licForm.dsls_target.id_for_label }}</th>
+												<td>{{ licForm.dsls_target }}</td>
+												<th>{{ licForm.count.id_for_label }}</th>
+												<td>{{ licForm.count }}</td>
+											</tr>
+											<tr>
+												<th>{{ licForm.module.id_for_label }}</th>
+												<td>{{ licForm.module }}</td>
+												<th>{{ licForm.memo.id_for_label }}</th>
+												<td>{{ licForm.memo }}</td>
+												<th>{{ licForm.explaration_date.id_for_label }}</th>
+												<td>{{ licForm.explaration_date }}</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- /.container-fluid -->
+	
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+	  <i class="fas fa-angle-up"></i>
+	</a>
+{% endblock %}

@@ -10,6 +10,11 @@ AREA_CHOICES = [
     ('GWHANGJU', 'Gwhanju'),
 ]
 
+SUPPORT_CHOICES = [
+    ('INSIDE', 'Inside'),
+    ('OUTSIDE', 'Outside'),
+]
+
 
 # Create your models here.
 class Customer(models.Model):
@@ -49,4 +54,17 @@ class License(models.Model):
     module = models.CharField(max_length=100)
     memo = models.CharField(max_length=200)
     explaration_date = models.DateField()
+    
+    
+class TechnicalSupport(models.Model):
+    support_staff = models.ForeignKey('auth.User', on_delete=models.CASCADE)    
+    support_date = models.DateTimeField(default=timezone.now)
+    support_type = models.CharField(max_length=15, choices=SUPPORT_CHOICES)
+    company = models.ForeignKey('manager.Company', related_name='technicalSupport', on_delete=models.CASCADE)
+    customer_name = models.CharField(max_length=20)
+    requestment = models.TextField()
+    answer = models.TextField()
+    
+    
+    
     

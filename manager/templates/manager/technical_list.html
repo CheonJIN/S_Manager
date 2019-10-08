@@ -1,0 +1,56 @@
+{% extands 'manager/base.html %}
+
+{% block content %}
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+	
+	  <!-- Page Heading -->
+	  <h1 class="h3 mb-2 text-gray-800">Technical Supports</h1>
+	
+	  <!-- DataTales Example -->
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Supports list</h6>
+				<a class="float-right" href="{% url 'license_new' %}"><span class="fas fa-user-plus"></span></a>
+			</div>
+				<div class="card-body">
+					<div class="table-responsive">
+					    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					      <thead>
+					        <tr>
+					          <th>detail</th>
+					          <th>company</th>
+					          <th>customer_name</th>
+					          <th>support_staff</th>
+					          <th>support_type</th>
+					          <th>support_date</th>
+					          <th>requestment</th>
+					          <th>answer</th>
+					        </tr>
+					      </thead>
+							<tbody>
+							{% for tech in techs %}
+								<tr>
+									<td>{{ tech.company }}</td>
+									<td>{{ tech.customer_name }}</td>
+									<td>{{ tech.support_staff }}</td>
+									<td>{{ tech.support_type }}</td>
+									<td>{{ tech.support_date }}</td>
+									<td>{{ tech.requestment }}</td>
+									<td>{{ tech.answer }}</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+					    </table>
+					</div>
+				</div>
+			</div>
+	</div>
+	    <!-- /.container-fluid -->
+	
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+	  <i class="fas fa-angle-up"></i>
+	</a>
+	  <!-- Custom styles for this page -->
+{% endblock %}

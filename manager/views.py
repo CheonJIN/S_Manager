@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Customer, Company, License
-from .forms import CustomerForm, CompanyForm, LicenseForm
+from .models import Customer, Company, License, TechnicalSupport
+from .forms import CustomerForm, CompanyForm, LicenseForm, TechnicalForm
 
 
 # Create your views here.
@@ -156,5 +156,27 @@ def license_remove(request, pk):
     return redirect('license_list')
 
 
-def technical_reg(request):
-    return render(request, 'manager/technical_reg.html', {})
+def technical_list(request):
+    techs = TechnicalSupport.objects.order_by('support_date')
+    
+    return render(request, 'manager/technicallist.html', {'techs': techs})
+
+
+def technical_new(request):
+    if request.method == "POST":
+        form = TechnicalForm(request.POST)
+        licForm = LicenseForm(request.POST)
+        
+        if form.is_valid():
+            tech = form.save(commit=False)
+            tech.save()
+            
+            lic = licForm.save(commit=False)
+            lic.save()
+            
+            return redirect('technicalSupport_list')
+    else:
+        form = TechnicalForm()
+        licForm = LicenseForm()
+    
+    return render(request, 'manager/technical_new.html', {'form': form, 'licForm': licForm})
