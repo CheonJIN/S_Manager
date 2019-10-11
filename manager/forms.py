@@ -5,8 +5,12 @@ Created on 2019. 9. 23.
 '''
 from django import forms
 from .models import Customer, Company, License, TechnicalSupport
-from django.forms.widgets import Textarea
-from django.forms.fields import CharField
+
+
+SUPPORT_CHOICES = [
+    ('INSIDE', 'Inside'),
+    ('OUTSIDE', 'Outside'),
+]
 
 
 class CustomerForm(forms.ModelForm):
@@ -49,8 +53,8 @@ class TechnicalForm(forms.ModelForm):
         fields = ('company', 'customer_name', 'support_staff', 'support_date', 'support_type', 'requestment', 'answer',)
         widgets = {
             'support_date': forms.DateInput(attrs={'type': 'date', 'style': 'width: 100%'}),
-            'requestment': Textarea(attrs={'style': 'width: 100%'}),
-            'answer': Textarea(attrs={'style': 'width: 100%'}),
+            'requestment': forms.Textarea(attrs={'style': 'width: 100%'}),
+            'answer': forms.Textarea(attrs={'style': 'width: 100%'}),
             'customer_name': forms.TextInput(attrs={'style': 'width: 100%'}),
         }
     

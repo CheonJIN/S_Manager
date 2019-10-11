@@ -27,5 +27,9 @@ urlpatterns = [
     path('license/<int:pk>/edit', views.license_edit, name='license_edit'),
     path('license/<int:pk>/remove', views.license_remove, name='license_remove'),
     
-    path('Technical/Registration/', views.technical_new, name='technical_new'),
+    path('Technical/list/', views.technical_list, name="technical_list"),
+    path('Technical/new/', views.technical_new, name='technical_new'),
+    path('Technical/<int:pk>/edit', views.technical_new, name='technical_edit'),
+    
+    path('login/', views.login, name="login"),
 ]

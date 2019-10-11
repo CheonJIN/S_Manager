@@ -1,4 +1,4 @@
-{% extands 'manager/base.html %}
+{% extends 'manager/base.html' %}
 
 {% block content %}
 	<!-- Begin Page Content -->
@@ -11,7 +11,6 @@
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">Supports list</h6>
-				<a class="float-right" href="{% url 'license_new' %}"><span class="fas fa-user-plus"></span></a>
 			</div>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -31,6 +30,9 @@
 							<tbody>
 							{% for tech in techs %}
 								<tr>
+									<td>
+										<a href=""><span class="fas fa-info-circle"></span></a>
+									</td>
 									<td>{{ tech.company }}</td>
 									<td>{{ tech.customer_name }}</td>
 									<td>{{ tech.support_staff }}</td>

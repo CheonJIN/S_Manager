@@ -23,45 +23,55 @@
 										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 											<th colspan="10"><h5 class="font-weight-bold text-primary">Technical Support</h5></th>
 											<tr>
-												<th>{{ form.company.id_for_label }}</th>
-												<td>{{ form.company }}</td>
-												<th>{{ form.customer_name.id_for_label }}</th>
+												<th colspan="3">Company</th>
+												<th>Customer name</th>
+												<th>Support staff</th>
+												<th>Support type</th>
+												<th>Support date</th>
+											</tr>
+											<tr>
+												<td colspan="3">{{ form.company }}</td>
 												<td>{{ form.customer_name }}</td>
-												<th>{{ form.support_staff.id_for_label }}</th>
 												<td>{{ form.support_staff }}</td>
-												<th>{{ form.support_type.id_for_label }}</th>
 												<td>{{ form.support_type }}</td>
-												<th>{{ form.support_date.id_for_label }}</th>
 												<td>{{ form.support_date }}</td>
 											</tr>
 											<tr>
-												<th>{{ form.requestment.id_for_label }}</th>
+												<th>Requestment</th>
 												<td colspan="4">{{ form.requestment }}</td>
-												<th>{{ form.answer.id_for_label }}</th>
-												<td colspan="4">{{ form.answer }}</td>
+												<th>Answer</th>
+												<td colspan="4">{{ form.answer }}</td>												
 											</tr>
-											<th colspan="10"><h5 class="font-weight-bold text-primary">License</h5></th>
+											
+
+<!-- 											<th colspan="10"><h5 class="font-weight-bold text-primary">License</h5></th>
 											<tr>
-												<th>{{ licForm.ip.id_for_label }}</th>
+												<th>IP</th>
 												<td>{{ licForm.ip }}</td>
-												<th>{{ licForm.host.id_for_label }}</th>
+												<th>Host</th>
 												<td>{{ licForm.host }}</td>
-												<th>{{ licForm.lum_target.id_for_label }}</th>
+												<th>Lum target</th>
 												<td>{{ licForm.lum_target }}</td>
-												<th>{{ licForm.dsls_target.id_for_label }}</th>
+												<th>Dsls target</th>
 												<td>{{ licForm.dsls_target }}</td>
-												<th>{{ licForm.count.id_for_label }}</th>
+												<th>Count</th>
 												<td>{{ licForm.count }}</td>
 											</tr>
 											<tr>
-												<th>{{ licForm.module.id_for_label }}</th>
+												<th>Module</th>
 												<td>{{ licForm.module }}</td>
-												<th>{{ licForm.memo.id_for_label }}</th>
+												<th>Memo</th>
 												<td>{{ licForm.memo }}</td>
-												<th>{{ licForm.explaration_date.id_for_label }}</th>
+												<th>Explaration date</th>
 												<td>{{ licForm.explaration_date }}</td>
-											</tr>
+											</tr> -->
 										</table>
+										<button type="submit" class="btn btn-success btn-icon-split">
+											<span class ="icon text-white-50">
+												<i class="far fa-save"></i>
+											</span>
+											<span class="text">Save</span>
+										</button>
 									</div>
 								</div>
 							</form>

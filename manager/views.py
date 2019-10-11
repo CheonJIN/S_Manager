@@ -8,6 +8,10 @@ def home(request):
     return render(request, 'manager/home.html', {}) 
 
 
+def login(request):
+    return render(request, 'registration/login.html', {})
+
+
 def customer_list(request):
     customers = Customer.objects.order_by('name')
     
@@ -159,24 +163,33 @@ def license_remove(request, pk):
 def technical_list(request):
     techs = TechnicalSupport.objects.order_by('support_date')
     
-    return render(request, 'manager/technicallist.html', {'techs': techs})
+    return render(request, 'manager/technical_list.html', {'techs': techs})
 
 
 def technical_new(request):
     if request.method == "POST":
         form = TechnicalForm(request.POST)
-        licForm = LicenseForm(request.POST)
-        
         if form.is_valid():
             tech = form.save(commit=False)
             tech.save()
             
-            lic = licForm.save(commit=False)
-            lic.save()
-            
-            return redirect('technicalSupport_list')
+            return redirect('technical_list')
     else:
         form = TechnicalForm()
-        licForm = LicenseForm()
     
-    return render(request, 'manager/technical_new.html', {'form': form, 'licForm': licForm})
+    return render(request, 'manager/technical_edit.html', {'form': form})
+
+
+def technical_edit(request, pk):
+    tech = get_object_or_404(TechnicalSupport, pk=pk)
+    if request.method == "POST":
+        form = TechnicalForm(request.POST)
+        if form.is_valid():
+            tech = form.save(commit=False)
+            tech.save()
+            
+            return redirect('technical_list')
+    else:
+        form = TechnicalForm()
+    
+    return render(request, 'manager/technical_edit.html', {'form': form})
